@@ -1,0 +1,48 @@
+indentation = 2
+separate-label = true
+final-newline = true
+
+[preserve-newline]
+content = true
+math = true
+
+[block]
+long-block-style = "compact"
+
+[term]
+space-before = false
+space-after = true
+
+[named-argument]
+space-before = false
+space-after = true
+
+[dictionary-entry]
+space-before = false
+space-after = true
+
+[import-statement]
+space-before = false
+space-after = true
+
+[comma]
+space-before = false
+space-after = true
+
+[columns]
+comma = "end-of-content"
+
+[heading]
+blank-lines-before = 1
+blank-lines-after = 0
+
+[columns-methods]
+tablex = "columns"
+table = "columns"
+gridx = "columns"
+grid = "columns"
+
+[automatic-newline]
+max-width = 120
+in-strong = false # allow automatic linebreak in strong (*...*)
+in-emphasis = false # allow automatic linebreak in emphasis (_..._)
