@@ -1,10 +1,20 @@
 drawio=$(wildcard figs/*.drawio)
 svg=$(patsubst %.drawio,%.svg,$(drawio))
 
-report.pdf: *.typ *.bib $(svg) figs/*
+all: report.pdf report.html
+
+Makefile: *.typ *.bib $(svg) figs/*
+	touch Makefile
+
+report.pdf: Makefile
+
+report.html: Makefile
 
 %.pdf: %.typ
-	typst compile $<
+	typst compile $< -f pdf --features html
+
+%.html: %.typ
+	typst compile $< -f html --features html
 
 %.svg: %.pdf
 	pdf2svg $< $@
@@ -15,5 +25,9 @@ report.pdf: *.typ *.bib $(svg) figs/*
 show: report.pdf
 	firefox report.pdf &
 
+watch: 
+	typst watch report.typ --features html -f pdf &
+	typst watch report.typ --features html -f html
+
 clean: 
-	rm -rf *.pdf
+	rm -rf *.pdf *.html

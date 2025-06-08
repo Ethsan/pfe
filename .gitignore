@@ -1,3 +1,5 @@
 *.pdf
 doc/
 reunion/
+*.bkp
+*.html

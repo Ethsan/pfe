@@ -1,131 +1,181 @@
-#import "@preview/glossarium:0.5.6": make-glossary, register-glossary, print-glossary, gls, glspl, gls-short
+#import "@preview/glossy:0.8.0": *
+
+#let small = sub.with(baseline: 0em)
 
 #let entry-list = (
-  (
-    key: "cpu",
-    short: smallcaps[cpu],
-    long: link("https://fr.wikipedia.org/wiki/Processeur")[Processeur],
-    description: [de l'anglais Central Processing Unit],
+  cpu: (
+    short: "CPU",
+    long: "Processeur",
+    // description: "de l'anglais Central Processing Unit",
   ),
+  dma:
   (
-    key: "dma",
-    short: smallcaps[dma],
-    long: link("https://fr.wikipedia.org/wiki/Acc%C3%A8s_direct_%C3%A0_la_m%C3%A9moire")[Accès
-    Directe à la Mémoire],
-    description: [Accès mémoire initié par un périphérique sans intervention du #gls-short("cpu")],
+    short: "DMA",
+    long: "Accès Directe à la Mémoire",
+    // description: "Accès mémoire initié par un périphérique sans intervention du #gls-short("cpu")",
   ),
+  esn:
   (
-    key: "esn",
-    short: smallcaps[esn],
-    long: link("https://fr.wikipedia.org/wiki/Entreprise_de_services_du_num%C3%A9rique")[Entreprises
-    de Services du Numériques],
-    description: [Anciennement connu sous le nom Société de Services en Ingénierie Informatique (#smallcaps[ssii])],
+    short: "ESN",
+    long: "Entreprises de Services du Numériques",
+    // description: [Anciennement connu sous le nom Société de Services en Ingénierie
+    // Informatique (SSII)],
   ),
+  mmu:
   (
-    key: "mmu",
-    short: smallcaps[mmu],
-    long: link("https://fr.wikipedia.org/wiki/Unit%C3%A9_de_gestion_de_m%C3%A9moire")[Memory
-    Management Unit],
-    description: [Composant physique responsable de la gestion et traduction des
-    accés mémoire du #gls-short("cpu")],
+    short: "MMU",
+    long: "Memory Management Unit",
+    description: "Unité de Gestion Mémoire",
+    // description: [Composant physique responsable de la gestion et traduction des
+    // accés mémoire du #gls-short("cpu")],
   ),
+  iommu:
   (
-    key: "iommu",
-    short: smallcaps[iommu],
-    long: link("https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit")[Input-Output Memory Management Unit],
-    description: [Accès mémoire initié par un périphérique sans intervention du #gls-short("cpu")],
+    short: "IOMMU",
+    long: "Input-Output Memory Management Unit",
+    // description: "Accès mémoire initié par un périphérique sans intervention du #gls-short("cpu")",
   ),
+  pcie:
   (
-    key: "pcie",
-    short: [#smallcaps[pci]#sub(baseline: 0em)[e]#super[#sym.copyright]],
-    long: link("https://fr.wikipedia.org/wiki/Acc%C3%A8s_direct_%C3%A0_la_m%C3%A9moire")[Peripheral
-    Component Interconnect Express],
-    description: [Norme de bus d'extension Standard défini par le consortium #link("https://pcisig.com")[Peripheral
-    Component Interconnect Special Interest (#smallcaps("pci sig"))]],
+    short: "PCIe",
+    long: "Peripheral Component Interconnect Express",
+    // description: [Norme de bus d'extension Standard défini par le consortium #[Peripheral
+    // Component Interconnect Special Interest (PCI SIG)]],
   ),
+  pci:
   (
-    key: "bds",
-    short: smallcaps[bds],
+    short: "PCI",
+    long: "Peripheral Component Interconnect",
+    // description: [Norme de bus d'extension Standard défini par le consortium #[Peripheral
+    // Component Interconnect Special Interest (PCI SIG)]],
+  ),
+  bds:
+  (
+    short: "BDS",
     long: "Big-Data et Sécurité",
   ),
+  hpc:
   (
-    key: "hpc",
-    short: smallcaps[hpc],
+    short: "HPC",
     long: "Calcul Haute Performance",
   ),
+  bxi:
   (
-    key: "bxi",
-    short: smallcaps[bxi],
-    plural: [#smallcaps[bxi]#sub(baseline: 0em)[v3]],
+    short: "BXI",
+    plural: "BXIv3",
     long: "BullSequana eXascale Interconnect",
   ),
+  nic:
   (
-    key: "nic",
-    short: smallcaps[nic],
-    long: "Carte d'interface réseau",
+    short: "NIC",
+    long: "Carte d'Interface Réseau",
   ),
+  qemu:
   (
-    key: "qemu",
-    short: smallcaps[qemu],
+    short: "QEMU",
     long: "Quick Emulator",
   ),
+  api:
   (
-    key: "api",
-    short: smallcaps[api],
-    long: "Interface de Progammation d'Application",
+    short: "API",
+    long: "Application Programming Interface",
+    description: "Interface de Progammation d'Application",
   ),
+  mpi:
   (
-    key: "mpi",
-    short: smallcaps[mpi],
+    short: "MPI",
     long: "Messaging Passing Interface",
   ),
+  vm:
   (
-    key: "vm",
-    short: smallcaps[vm],
-    plural: [#smallcaps[vm]s],
+    short: "VM",
+    plural: "VMs",
     long: "Machine virtuelle",
     longplural: "Machines virtuelles",
   ),
+  svm:
   (
-    key: "svm",
-    short: smallcaps[svm],
+    short: "SVM",
     long: "Shared Virtual Memory",
-    description: [aussi connu sous le nom de Shared Virtual Addresses (#smallcaps[sva])],
+    description: [Mémoire Virtuelle Partagée (aussi connu sous le nom #emph[Shared
+    Virtual Address] - SVA)],
   ),
+  amd:
   (
-    key: "amd",
-    short: smallcaps[amd],
+    short: "AMD",
     long: "Advanced Micro Devices Inc.",
+  ),
+  amdvi:
+  (
+    key: "amdvi",
+    short: "AMD-Vi",
+    long: "AMD's I/O Virtualization Technology",
+  ),
+  os:
+  (
+    short: "OS",
+    long: "Operating System",
+    description: [Système d'exploitation],
+  ),
+  tlb:
+  (
+    short: "TLB",
+    long: "Translation Lookaside Buffer",
+    description: [Répertoire de Page Active],
+  ),
+  pio:
+  (
+    short: "PIO",
+    long: "Programmed Input-Output",
+  ),
+  mmio:
+  (
+    short: "MMIO",
+    long: "Memory Mapped Input-Output",
+  ),
+  ram:
+  (
+    short: "RAM",
+    long: "Random Access Memory",
+    description: [Mémoire vive],
+  ),
+  iova:
+  (
+    short: "IOVA",
+    long: "Input-Output Virtual Address",
+    description: [Addresse Virtuelle d'Entrée-Sortie],
+  ),
+  spa:
+  (
+    short: "SPA",
+    long: "System Physical Address",
+    description: [Adresse Physique de l'Hôte],
+  ),
+  gva:
+  (
+    short: "GVA",
+    long: "Guest Virtual Address",
+    description: [Adresse Virtuelle de l'Invité],
+  ),
+  gpa:
+  (
+    short: "GPA",
+    long: "Guest Physical Address",
+    description: [Addresse Physique de l'Invité],
+  ),
+  ats:
+  (
+    short: "ATS",
+    long: "Address Translation Service",
+    description: [Service de Traduction d'Addresse],
+  ),
+  pri:
+  (
+    short: "PRI",
+    long: "Page Request Interface",
+    description: [Interface de Requête de Page],
   ),
 )
 
-#let display-glossary() = {
-  let __get_attribute(entry, attrname) = entry.at(attrname)
-  let __has_attribute(entry, attrname) = {
-    let attr = __get_attribute(entry, attrname)
-    return attr != none and attr != "" and attr != []
-  }
-  let has-short(entry) = __has_attribute(entry, "short")
-  let has-long(entry) = __has_attribute(entry, "long")
-  let print-title(entry) = {
-    let caption = []
-    let txt = strong.with(delta: 200)
-
-    if has-long(entry) and has-short(entry) {
-      caption += txt(entry.short + [ -- ] + entry.long)
-    } else if has-long(entry) {
-      caption += txt(entry.long)
-    } else {
-      caption += txt(entry.short)
-    }
-    return caption
-  }
-  print-glossary(entry-list, show-all: true, user-print-title: print-title)
-}
-
-#let setup-glossary(body) = context {
-  show: make-glossary
-  register-glossary(entry-list)
-
-  body
-}
+#let display-glossary = glossary.with(show-all: true)
+#let setup-glossary = init-glossary.with(entry-list)
